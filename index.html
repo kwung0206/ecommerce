@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>김광진 — 이력서</title>
+
+  <!-- SEO / Social -->
+  <meta name="description" content="컴퓨터 보안 전문가 김광진 이력서" />
+  <meta property="og:title" content="김광진 — 이력서" />
+  <meta property="og:description" content="컴퓨터 보안 전문가 김광진 이력서" />
+  <meta property="og:type" content="profile" />
+  <meta property="og:locale" content="ko_KR" />
+
+  <!-- 폰트 -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0b0c10; --card:#121318; --text:#e9eef5; --muted:#aab3c5;
+      --accent:#4da3ff; --chip:#1a1f2e; --border:#232838; --shadow:0 6px 24px rgba(0,0,0,0.25);
+    }
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg:#f6f8fb; --card:#ffffff; --text:#111827; --muted:#49566b;
+        --accent:#2563eb; --chip:#edf2ff; --border:#e5e7eb; --shadow:0 6px 24px rgba(17,24,39,0.08);
+      }
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; background:linear-gradient(180deg,var(--bg),#0d101a 45%, var(--bg) 100%);
+      color:var(--text); font-family:"Noto Sans KR",system-ui,-apple-system,Segoe UI,Roboto,Arial,Helvetica,sans-serif;
+      letter-spacing:0.2px;
+    }
+    .wrap{max-width:940px;margin:0 auto;padding:48px 20px 64px}
+    header{
+      display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;
+      margin-bottom:28px; padding-bottom:18px; border-bottom:1px solid var(--border);
+    }
+    .hero{display:flex; align-items:center; gap:18px; min-width:300px}
+    /* === 아바타(프로필 이미지) === */
+    .avatar{
+      position:relative; width:112px; height:112px; flex:0 0 auto; border-radius:999px; padding:3px;
+      background:conic-gradient(from 210deg, var(--accent), transparent 70%);
+      box-shadow:var(--shadow);
+    }
+    .avatar img{
+      width:100%; height:100%; display:block; border-radius:50%; object-fit:cover;
+      background:var(--chip); border:1px solid var(--border);
+    }
+    .title h1{font-size:40px; line-height:1.2; margin:0 0 6px}
+    .title p{margin:0; color:var(--muted); font-size:18px}
+    .contact a{color:var(--accent); text-decoration:none; font-weight:600; border-bottom:1px dashed var(--accent);}
+
+    nav{
+      position:sticky; top:0; backdrop-filter:saturate(1.2) blur(6px);
+      background: color-mix(in srgb, var(--card) 76%, transparent);
+      border-bottom:1px solid var(--border); z-index:5;
+    }
+    .nav-inner{max-width:940px;margin:0 auto;display:flex;gap:14px;padding:10px 20px}
+    nav a{color:var(--text); text-decoration:none; padding:8px 12px; border-radius:10px}
+    nav a:hover{background:var(--chip)}
+    section{
+      background:var(--card); border:1px solid var(--border); border-radius:16px; padding:24px;
+      margin:16px 0; box-shadow:var(--shadow);
+    }
+    h2{margin:0 0 14px; font-size:22px}
+    .chips{display:flex; flex-wrap:wrap; gap:8px}
+    .chip{background:var(--chip); border:1px solid var(--border); padding:6px 10px; border-radius:999px; font-size:14px}
+    .rows{display:grid; gap:14px}
+    .item{
+      display:grid; grid-template-columns: 1fr auto; gap:6px; padding:14px; border:1px solid var(--border);
+      border-radius:12px; background:linear-gradient(180deg, color-mix(in srgb, var(--card) 85%, #000 5%), var(--card));
+    }
+    .item h3{margin:0; font-size:18px}
+    .item .meta{color:var(--muted); font-size:14px}
+    .item ul{margin:8px 0 0 18px}
+    footer{color:var(--muted); text-align:center; margin-top:28px}
+    .btns{display:flex; gap:8px; flex-wrap:wrap}
+    .btn{
+      display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:12px; border:1px solid var(--border);
+      background:var(--chip); color:var(--text); text-decoration:none; font-weight:600;
+    }
+    .btn:hover{filter:brightness(1.08)}
+    .muted{color:var(--muted)}
+    @media print{
+      nav, .btns{display:none}
+      body{background:#fff} section{box-shadow:none}
+      .wrap{padding:0}
+      header{border:none}
+    }
+  </style>
+
+  <!-- 구조화 데이터 -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Person",
+    "name":"김광진",
+    "jobTitle":"컴퓨터 보안 전문가",
+    "email":"mailto:kgj0199kgj0199@gmail.com",
+    "alumniOf":[
+      {"@type":"CollegeOrUniversity","name":"동양미래대학교","department":"컴퓨터소프트웨어공학과"},
+      {"@type":"HighSchool","name":"화성반월고등학교"}
+    ],
+    "knowsAbout": ["보안","리눅스","도커","쿠버네티스","AWS","TCP/IP","소켓 프로그래밍","Spring Boot","JSP","Python","Java","C","Oracle DB"]
+  }
+  </script>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="#about">프로필</a>
+      <a href="#skills">기술 스택</a>
+      <a href="#projects">프로젝트</a>
+      <a href="#edu">교육</a>
+      <a href="#certs">수상/자격</a>
+    </div>
+  </nav>
+
+  <div class="wrap">
+    <header>
+      <div class="hero">
+        <!-- 프로필 이미지: 같은 폴더에 profile.jpg 넣으면 표시됩니다 -->
+        <figure class="avatar">
+          <img src="profile.jpg" alt="김광진 프로필 사진" loading="lazy" />
+        </figure>
+        <div class="title">
+          <h1>김광진</h1>
+          <p>컴퓨터 보안 전문가</p>
+        </div>
+      </div>
+      <div class="btns">
+        <a class="btn" href="mailto:kgj0199kgj0199@gmail.com" aria-label="이메일 보내기">📧 이메일</a>
+        <a class="btn" href="#" onclick="window.print(); return false;">🖨️ PDF로 저장</a>
+      </div>
+    </header>
+
+    <section id="about" aria-labelledby="about-title">
+      <h2 id="about-title">프로필</h2>
+      <p class="muted">이메일: <a class="contact" href="mailto:kgj0199kgj0199@gmail.com">kgj0199kgj0199@gmail.com</a></p>
+    </section>
+
+    <section id="skills" aria-labelledby="skills-title">
+      <h2 id="skills-title">기술 스택</h2>
+
+      <h3>Front End</h3>
+      <div class="chips">
+        <span class="chip">HTML5</span>
+        <span class="chip">CSS</span>
+      </div>
+
+      <h3 style="margin-top:14px">Back End</h3>
+      <div class="chips">
+        <span class="chip">JSP</span>
+        <span class="chip">Spring Boot</span>
+        <span class="chip">C</span>
+        <span class="chip">Python</span>
+        <span class="chip">Java</span>
+      </div>
+
+      <h3 style="margin-top:14px">시스템 엔지니어링</h3>
+      <div class="chips">
+        <span class="chip">Linux</span>
+        <span class="chip">Docker</span>
+        <span class="chip">Kubernetes</span>
+        <span class="chip">AWS</span>
+        <span class="chip">CISCO</span>
+        <span class="chip">TCP/IP 소켓 프로그래밍</span>
+      </div>
+
+      <h3 style="margin-top:14px">Database</h3>
+      <div class="chips">
+        <span class="chip">Oracle</span>
+      </div>
+    </section>
+
+    <section id="projects" aria-labelledby="projects-title">
+      <h2 id="projects-title">경력 / 프로젝트</h2>
+      <div class="rows">
+        <article class="item" aria-labelledby="p1-title">
+          <div>
+            <h3 id="p1-title">졸업작품 — API를 활용한 AI 면접 웹 사이트</h3>
+            <div class="meta">역할: 백엔드 개발</div>
+            <ul>
+              <li>백엔드 핵심 모듈 개발 및 API 기본 구조 설계</li>
+              <li>Docker 기반 로컬 개발환경 구성 및 배포 스크립트 초안 작성</li>
+              <li>Spring Boot 기반 서버 사이드 렌더링 및 기본 인증 흐름 구성</li>
+            </ul>
+          </div>
+          <div class="meta" aria-label="기간">2025.03 – 2025.11 (9개월)</div>
+        </article>
+      </div>
+    </section>
+
+    <section id="edu" aria-labelledby="edu-title">
+      <h2 id="edu-title">교육</h2>
+      <div class="rows">
+        <article class="item">
+          <div>
+            <h3>동양미래대학교 — 컴퓨터소프트웨어공학과</h3>
+            <div class="meta">2021.03 – 2026.02</div>
+          </div>
+          <div></div>
+        </article>
+        <article class="item">
+          <div>
+            <h3>화성반월고등학교</h3>
+            <div class="meta">2018.03 – 2021.02</div>
+          </div>
+          <div></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="certs" aria-labelledby="certs-title">
+      <h2 id="certs-title">수상 및 자격</h2>
+      <div class="rows">
+        <article class="item">
+          <h3>COS Pro 2급 (C)</h3>
+          <div class="meta">취득일: 2024.07.20</div>
+        </article>
+        <article class="item">
+          <h3>SQLD</h3>
+          <div class="meta">취득일: 2025.09.27</div>
+        </article>
+      </div>
+    </section>
+
+    <footer>
+      <p>문서 생성일(업데이트): 2025-11-10</p>
+    </footer>
+  </div>
+</body>
+</html>
