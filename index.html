@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>김광진 · AI 영상 모음 사이트 포트폴리오</title>
-  <meta name="description" content="AI·보안 지향 풀스택 & DevOps — React · Spring Boot · Docker · Oracle · Nginx | AI 영상 모음 사이트 포트폴리오" />
-  <meta property="og:title" content="김광진 · AI 영상 모음 사이트 포트폴리오" />
-  <meta property="og:description" content="AI·보안 지향 풀스택 & DevOps — React · Spring Boot · Docker · Oracle · Nginx" />
+  <title>김광진 · AI-Collector (AI 영상 모음 사이트) 프로젝트 포트폴리오</title>
+  <meta name="description" content="AI-Collector · AI 영상 모음 사이트 — React · Spring Boot · Oracle · Docker · Nginx · AI 태깅/검색" />
+  <meta property="og:title" content="김광진 · AI-Collector (AI 영상 모음 사이트) 프로젝트 포트폴리오" />
+  <meta property="og:description" content="React · Spring Boot · Oracle · Docker · Nginx · WhisperX · 멀티레이블 태깅으로 구현한 AI 영상 모음 서비스" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://github.com/kwung0206/resume/blob/main/profile.jpg?raw=1" />
   <meta name="color-scheme" content="light dark" />
@@ -30,14 +30,30 @@
       }
     }
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Apple SD Gothic Neo,Noto Sans KR,Arial,sans-serif; background:var(--bg); color:var(--text);}
+    html,body{
+      margin:0;
+      padding:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Apple SD Gothic Neo,Noto Sans KR,Arial,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+    }
     a{color:var(--brand);text-decoration:none}
     a:hover{text-decoration:underline}
     .container{max-width:1080px;margin:0 auto;padding:24px}
-    header{position:sticky;top:0;backdrop-filter:saturate(180%) blur(8px); background:color-mix(in oklab, var(--bg) 75%, transparent); border-bottom:1px solid var(--border); z-index:10}
+    header{
+      position:sticky;
+      top:0;
+      backdrop-filter:saturate(180%) blur(8px);
+      background:color-mix(in oklab, var(--bg) 75%, transparent);
+      border-bottom:1px solid var(--border);
+      z-index:10
+    }
     .nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
     .nav .brand{display:flex;align-items:center;gap:12px;font-weight:700}
-    .nav .brand .dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--brand-2))}
+    .nav .brand .dot{
+      width:10px;height:10px;border-radius:50%;
+      background:linear-gradient(135deg,var(--brand),var(--brand-2))
+    }
     .nav a{font-weight:600}
     .nav-links{display:flex;gap:16px}
     .nav-toggle{display:none}
@@ -48,280 +64,30 @@
     .mobile-menu{display:none;padding:12px 0}
     .mobile-menu.open{display:block}
 
-    .hero{display:grid;grid-template-columns:160px 1fr;gap:24px;align-items:center;padding:28px 0}
-    .avatar{width:160px;height:160px;border-radius:24px;object-fit:cover;border:1px solid var(--border); box-shadow:0 10px 30px color-mix(in oklab, var(--brand) 20%, transparent)}
+    .hero{
+      display:grid;
+      grid-template-columns:160px 1fr;
+      gap:24px;
+      align-items:center;
+      padding:28px 0
+    }
+    .avatar{
+      width:160px;height:160px;border-radius:24px;object-fit:cover;
+      border:1px solid var(--border);
+      box-shadow:0 10px 30px color-mix(in oklab, var(--brand) 20%, transparent)
+    }
     .hero h1{margin:0 0 8px 0;font-size:28px}
-    .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:var(--chip);border:1px solid var(--border); font-weight:600}
+    .badge{
+      display:inline-block;
+      padding:6px 10px;
+      border-radius:999px;
+      background:var(--chip);
+      border:1px solid var(--border);
+      font-weight:600
+    }
     .muted{color:var(--muted)}
 
     section{margin:28px 0}
-    .card{background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:20px}
-    .grid{display:grid;gap:16px}
-    .grid-2{grid-template-columns:1fr 1fr}
-    .grid-3{grid-template-columns:repeat(3,1fr)}
-    @media (max-width:960px){ .grid-2,.grid-3{grid-template-columns:1fr} .hero{grid-template-columns:1fr; text-align:center} .avatar{margin:0 auto}}
-
-    h2{font-size:22px;margin:0 0 8px 0}
-    h3{font-size:18px;margin:16px 0 8px}
-    ul{margin:8px 0 0 18px}
-
-    .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
-    .chip{padding:6px 10px;border-radius:999px;background:var(--chip);border:1px solid var(--border);font-weight:600}
-
-    .kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:8px}
-    .kpi .tile{padding:14px;border-radius:14px;border:1px solid var(--border);background:var(--panel)}
-    .kpi .num{font-size:20px;font-weight:800}
-
-    .pill{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;border:1px solid var(--border);background:var(--chip);font-weight:600}
-    .ok{color:var(--ok)} .warn{color:var(--warn)} .bad{color:var(--bad)}
-
-    .footer{border-top:1px solid var(--border);padding:24px 0;margin-top:24px}
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;border:1px solid var(--border);background:linear-gradient(135deg, color-mix(in oklab,var(--chip),transparent 20%), color-mix(in oklab,var(--panel),transparent 20%));font-weight:700}
-    .btn:hover{transform:translateY(-1px)}
-    .btn-row{display:flex;gap:12px;flex-wrap:wrap}
-
-    /* Print */
-    @media print{
-      header,.btn-row{display:none}
-      .container{padding:0}
-      body{background:#fff;color:#000}
-      .card{border:1px solid #ddd}
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <div class="container nav">
-      <div class="brand"><span class="dot"></span> 김광진 · 포트폴리오</div>
-      <nav class="nav-links" aria-label="Primary">
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#project">Project</a>
-        <a href="#kpi">KPI</a>
-        <a href="#contact">Contact</a>
-      </nav>
-      <button class="nav-toggle btn" aria-label="메뉴 열기" onclick="toggleMenu()">메뉴</button>
-    </div>
-    <div class="container mobile-menu" id="mobileMenu" aria-label="모바일 메뉴">
-      <a href="#about">About</a> · <a href="#skills">Skills</a> · <a href="#project">Project</a> · <a href="#kpi">KPI</a> · <a href="#contact">Contact</a>
-    </div>
-  </header>
-
-  <main class="container">
-    <!-- HERO -->
-    <section class="hero card" id="home">
-      <img class="avatar" alt="프로필 이미지" src="https://github.com/kwung0206/resume/blob/main/profile.jpg?raw=1" />
-      <div>
-        <h1>김광진 <span class="muted">/ Full‑stack & DevOps</span></h1>
-        <div class="badge">AI·보안 지향 풀스택 & DevOps — React · Spring Boot · Docker · Oracle · Nginx</div>
-        <div class="btn-row" style="margin-top:12px">
-          <a class="btn" href="mailto:kgj0199kgj0199@gmail.com">메일 보내기</a>
-          <a class="btn" href="https://github.com/kwung0206" target="_blank" rel="noopener">GitHub 열기</a>
-          <button class="btn" onclick="window.print()">PDF로 저장(인쇄)</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about" class="grid">
-      <div class="card">
-        <h2>About Me</h2>
-        <p>저는 실제로 동작하는 제품을 끝까지 만들어내는 걸 가장 중요하게 생각하는 풀스택 개발자입니다. 프런트엔드는 React 기반으로 사용자 경험을 다듬고, 백엔드는 Spring Boot로 안정적인 API를 제공하며, Docker·Nginx·SSL까지 직접 구성해 배포/운영까지 책임지는 엔드투엔드 개발을 즐깁니다.</p>
-        <p>최근에는 AI 면접 연습 플랫폼과 AI 영상 모음 서비스 기획/개발을 병행하면서, LLM·STT/TTS·영상/자막 처리(WhisperX)·임베딩 기반 검색 등 AI 기능을 서비스에 자연스럽게 녹여내고 있습니다. 로컬 LLM(Ollama) 실험, 보안/네트워크(iptables, DKIM, SSL) 설정, 모니터링/장애 대응 등 운영 관점의 경험도 강점입니다.</p>
-        <p>목표는 “빠르고 신뢰할 수 있는 서비스”입니다. 기능은 작게 쪼개 빨리 배포하고, 사용자 피드백과 지표로 검증하며, 성능/보안/운영 자동화를 꾸준히 고도화합니다.</p>
-      </div>
-      <div class="card">
-        <h2>기본 정보</h2>
-        <p><strong>이메일</strong> · <a href="mailto:kgj0199kgj0199@gmail.com">kgj0199kgj0199@gmail.com</a></p>
-        <p><strong>GitHub</strong> · <a href="https://github.com/kwung0206" target="_blank" rel="noopener">github.com/kwung0206</a></p>
-        <div class="chips" style="margin-top:12px">
-          <span class="chip">Korea/Seoul (UTC+9)</span>
-          <span class="chip">한국어 · English</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- SKILLS -->
-    <section id="skills" class="card">
-      <h2>Skills</h2>
-      <div class="grid grid-3">
-        <div>
-          <h3>프론트엔드</h3>
-          <ul>
-            <li>React 18, React Router, Axios</li>
-            <li>SCSS / Bootstrap, 반응형 UI</li>
-            <li>Context·Zustand, 무한 스크롤·페이지네이션</li>
-            <li>WebSocket(실시간), 파일 업로드</li>
-            <li>Recharts / D3</li>
-          </ul>
-        </div>
-        <div>
-          <h3>백엔드</h3>
-          <ul>
-            <li>Java 17 · Spring Boot 3, Spring MVC</li>
-            <li>Spring Security + JWT, Validation</li>
-            <li>JPA/Hibernate, Swagger/OpenAPI</li>
-            <li>Python: Flask / FastAPI</li>
-            <li>실시간: Flask-SocketIO</li>
-          </ul>
-        </div>
-        <div>
-          <h3>AI / ML</h3>
-          <ul>
-            <li>OpenAI · Gemini, Ollama(exaone3.5:2.4b)</li>
-            <li>Whisper/WhisperX(전사/자막)</li>
-            <li>ElevenLabs TTS, HeyGen 아바타</li>
-            <li>sentence-transformers 임베딩 검색</li>
-          </ul>
-        </div>
-        <div>
-          <h3>데이터베이스 & 검색</h3>
-          <ul>
-            <li>Oracle, MongoDB, (프로젝트에 따라) PostgreSQL</li>
-            <li>인덱싱/최적화, BLOB 저장, 아카이빙</li>
-            <li>BM25 + KNN 하이브리드 검색(프로토타입)</li>
-          </ul>
-        </div>
-        <div>
-          <h3>DevOps & Tools</h3>
-          <ul>
-            <li>Docker / Docker Compose, Nginx 리버스 프록시</li>
-            <li>Let’s Encrypt + Certbot(SSL), Linux(CentOS 9)</li>
-            <li>iptables/firewalld, 포트포워딩/NAT, DKIM, DNS</li>
-            <li>GitHub Actions(CI/CD), Git 전략</li>
-            <li>curl·tcpdump·nmap, Postman/Insomnia, JUnit</li>
-          </ul>
-        </div>
-      </div>
-      <div class="chips" aria-hidden="true">
-        <span class="chip">React</span>
-        <span class="chip">Spring Boot</span>
-        <span class="chip">FastAPI</span>
-        <span class="chip">Docker</span>
-        <span class="chip">Nginx</span>
-        <span class="chip">Oracle</span>
-        <span class="chip">MongoDB</span>
-        <span class="chip">WhisperX</span>
-        <span class="chip">Ollama</span>
-        <span class="chip">Certbot</span>
-      </div>
-    </section>
-
-    <!-- PROJECT -->
-    <section id="project" class="grid">
-      <div class="card">
-        <h2>프로젝트명: AI 영상 모음 사이트</h2>
-        <p class="muted">AI 관련 영상(튜토리얼, 컨퍼런스, 데모)을 수집·정규화하고 자동 요약/챕터/태그/한글 자막을 제공하는 검색·큐레이션 허브</p>
-        <div class="btn-row">
-          <span class="pill">상태: <strong>기획/설계</strong></span>
-          <span class="pill">역할: 아키텍트 · 풀스택 · DevOps</span>
-        </div>
-      </div>
-      <div class="card">
-        <h3>문제 정의</h3>
-        <ul>
-          <li>영상이 여러 플랫폼에 분산되어 최신/중복/난이도/주제별 탐색이 어려움</li>
-          <li>제목·태그·자막 품질이 제각각이라 핵심 파악이 어려움</li>
-          <li>한국어 사용자 대상 한글 자막/요약/키워드 부족</li>
-        </ul>
-        <p><strong>목표</strong>: 멀티 소스 수집·정규화 + 자동 요약/챕터/태그/한글 자막 제공</p>
-      </div>
-      <div class="card">
-        <h3>아키텍처/설계</h3>
-        <ul>
-          <li><strong>프런트</strong>: Next.js(SSR/ISR, App Router), React 18, i18n(ko/en)</li>
-          <li><strong>BFF/API</strong>: FastAPI, OAuth2.1(Google/GitHub), Rate Limiting</li>
-          <li><strong>AI 파이프라인</strong>: WhisperX 전사, LLM 요약/챕터/태깅, sentence-transformers 임베딩</li>
-          <li><strong>데이터</strong>: PostgreSQL + OpenSearch/pgvector, Redis 캐시</li>
-          <li><strong>스토리지</strong>: S3/R2(MinIO 대체), CDN</li>
-          <li><strong>수집기</strong>: Celery/RQ 스케줄러, 중복 정규화</li>
-          <li><strong>운영</strong>: Docker→K8s, GitHub Actions, Nginx, Observability</li>
-          <li><strong>보안</strong>: oEmbed/공식 API, 원본 링크 표시, DMCA/삭제 워크플로, Vault</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>핵심 기능</h3>
-        <ol>
-          <li><strong>멀티 소스 수집·정규화</strong> — 중복/미러 판별, 주제·난이도 자동 라벨링</li>
-          <li><strong>AI 요약·챕터링·한글 자막</strong> — 한 줄·3줄 요약, 키워드, FAQ, 번역 자막</li>
-          <li><strong>하이브리드 의미 검색 & 추천</strong> — BM25+벡터, 협업 필터링 추천</li>
-          <li><strong>컬렉션/플레이리스트 & 알림</strong> — 주제 큐레이션, 채널/키워드 구독</li>
-        </ol>
-      </div>
-      <div class="card">
-        <h3>나의 역할 & 기여</h3>
-        <ul>
-          <li>Next.js+FastAPI+PostgreSQL+OpenSearch+Redis 전체 아키텍처 설계</li>
-          <li>크롤러/수집 파이프라인 설계(중복 제거·스케줄링·예외 복구) 및 스키마 정의</li>
-          <li>전사/요약/임베딩 통합, 하이브리드 검색 랭킹 튜닝</li>
-          <li>성능·관측성 목표(LCP/TTFB/검색 p95) 및 i18n/접근성 가이드 수립</li>
-        </ul>
-      </div>
-      <div id="kpi" class="card">
-        <h3>결과 & KPI (예상)</h3>
-        <div class="kpi">
-          <div class="tile"><div class="num">LCP ≤ 2.5s</div><div class="muted">영상 상세 (KR)</div></div>
-          <div class="tile"><div class="num">p95 ≤ 300ms</div><div class="muted">검색 응답</div></div>
-          <div class="tile"><div class="num">WER 10~15%p↑</div><div class="muted">WhisperX 보정</div></div>
-        </div>
-        <ul>
-          <li>커버리지: 핵심 채널 200+, 초기 10k+ 영상 인덱싱, 한글 요약/자막 80%+</li>
-          <li>요약 만족도(설문) 4.3/5+</li>
-        </ul>
-        <div class="chips">
-          <span class="pill ok">성능</span>
-          <span class="pill warn">확장성</span>
-          <span class="pill bad">저작권 리스크 관리</span>
-        </div>
-      </div>
-      <div class="card">
-        <h3>회고 (배운 점)</h3>
-        <ul>
-          <li>API 한도/속도 제한 대응(캐시·배치·증분 동기화)의 중요성</li>
-          <li>벡터 검색만으로는 부족 — BM25와의 하이브리드가 만족도 ↑</li>
-          <li>요약 품질은 프롬프트·후처리·사용자 피드백 루프가 핵심</li>
-        </ul>
-        <h3>회고 (개선점)</h3>
-        <ul>
-          <li>사용자 피드백 기반 학습 루프 & A/B 테스트 자동화</li>
-          <li>온디바이스/엣지 임베딩(WebGPU)로 서버 부하 감소</li>
-          <li>모바일 전용 UX(요약 카드/스와이프 챕터) 강화</li>
-          <li>저작권/신고 프로세스 자동화, 기관/교육용 화이트라벨</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="card">
-      <h2>Contact</h2>
-      <p>프로젝트/협업 제안은 메일 또는 GitHub 이슈로 환영합니다.</p>
-      <div class="btn-row">
-        <a class="btn" href="mailto:kgj0199kgj0199@gmail.com">kgj0199kgj0199@gmail.com</a>
-        <a class="btn" href="https://github.com/kwung0206" target="_blank" rel="noopener">github.com/kwung0206</a>
-      </div>
-    </section>
-
-    <section class="muted" style="text-align:center;font-size:12px">
-      <p>프로필 이미지: <a href="https://github.com/kwung0206/resume/blob/main/profile.jpg" target="_blank" rel="noopener">github.com/kwung0206/resume/profile.jpg</a></p>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="container muted">© <span id="year"></span> 김광진 — AI·보안 지향 풀스택 & DevOps</div>
-  </footer>
-
-  <script>
-    function toggleMenu(){
-      const el = document.getElementById('mobileMenu');
-      el.classList.toggle('open');
-    }
-    document.getElementById('year').textContent = new Date().getFullYear();
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click',()=>{
-        const m=document.getElementById('mobileMenu');
-        if(m && m.classList.contains('open')) m.classList.remove('open');
-      })
-    })
-  </script>
-</body>
-</html>
+    .card{
+      background:var(--panel);
+      border:1px solid
