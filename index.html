@@ -491,40 +491,31 @@
     });
 
     // ✅ raw 코드 로딩 (자동)
-    const RAW_CODE_URL = "https://raw.githubusercontent.com/kwung0206/ecommerce/main/desktop_ml_damon.py";
-    async function loadCode(){
-      const box = document.getElementById("codeBox");
-      try{
-        box.textContent = "코드 불러오는 중…";
-        const res = await fetch(RAW_CODE_URL, { cache: "no-store" });
-        if(!res.ok) throw new Error("HTTP " + res.status);
-        const text = await res.text();
-        box.textContent = text;
-      }catch(err){
-        box.textContent =
-          "코드를 불러오지 못했습니다. (" + err.message + ")\n\n" +
-          "1) 파일 경로/브랜치(main) 확인\n" +
-          "2) 저장소가 다른 경우 RAW_CODE_URL 수정\n\n" +
-          "대신 GitHub 링크로 확인 가능:\n" +
-          "https://github.com/kwung0206/ecommerce/blob/main/desktop_ml_damon.py";
-      }
-    }
-    function reloadCode(){ loadCode(); }
+const RAW_CODE_URL =
+  "https://raw.githubusercontent.com/kwung0206/ecommerce/main/desktop_ml_daemon.py";
 
-    async function copyCode(){
-      const text = document.getElementById("codeBox").textContent || "";
-      try{
-        await navigator.clipboard.writeText(text);
-        alert("코드를 클립보드에 복사했어요.");
-      }catch(e){
-        alert("복사 실패: 브라우저 권한을 확인해줘.");
-      }
-    }
+async function loadCode(){
+  const box = document.getElementById("codeBox");
+  try{
+    box.textContent = "코드 불러오는 중…";
+    const res = await fetch(RAW_CODE_URL, { cache: "no-store" });
+    if(!res.ok) throw new Error("HTTP " + res.status);
+    box.textContent = await res.text();
+  }catch(err){
+    box.textContent =
+      "코드를 불러오지 못했습니다. (" + err.message + ")\n\n" +
+      "1) 파일 경로/브랜치(main) 확인\n" +
+      "2) 저장소가 다른 경우 RAW_CODE_URL 수정\n\n" +
+      "대신 GitHub 링크로 확인 가능:\n" +
+      "https://github.com/kwung0206/ecommerce/blob/main/desktop_ml_daemon.py";
+  }
+}
 
     loadCode();
   </script>
 </body>
 </html>
+
 
 
 
