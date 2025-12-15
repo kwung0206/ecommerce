@@ -5,8 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>김광진 · AI-Collector (AI 영상 모음 사이트) 프로젝트 포트폴리오</title>
 
-  <meta name="description" content="AI-Collector — 생성형 AI 영상 공유/수집 플랫폼. 카테고리 정리 · 프롬프트 기반 추천 · AI 유해 영상 필터링. React · Spring Boot · Oracle · Docker · Nginx" />
-
+  <meta name="description" content="AI-Collector — 생성형 AI 영상 공유/수집 플랫폼. 카테고리 정리 · 프롬프트 기반 추천 · 유해 영상 필터링. React · Spring Boot · Oracle · Docker · Nginx" />
   <meta property="og:title" content="김광진 · AI-Collector (AI 영상 모음 사이트) 프로젝트 포트폴리오" />
   <meta property="og:description" content="생성형 AI 영상 제작 시행착오를 줄이기 위한 영상 허브 — 태그/카테고리 정리 · 프롬프트 기반 추천 · 유해 영상 필터링" />
   <meta property="og:type" content="website" />
@@ -136,59 +135,76 @@
       .grid-2,.grid-3{grid-template-columns:1fr}
     }
 
-    .kpi{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:12px;
-      margin-top:8px
-    }
-    .kpi .tile{
-      padding:14px;
-      border-radius:14px;
-      border:1px solid var(--border);
-      background:var(--panel)
-    }
-    .kpi .num{font-size:20px;font-weight:850}
-
     .pill{
       display:inline-flex; align-items:center; gap:8px;
       padding:6px 10px; border-radius:999px;
       border:1px solid var(--border); background:var(--chip);
       font-weight:650
     }
-    .ok{color:var(--ok)} .warn{color:var(--warn)} .bad{color:var(--bad)}
 
-    .steps{display:grid;gap:10px;margin-top:10px}
-    .step{
-      display:flex; gap:12px; align-items:flex-start;
-      padding:12px; border:1px solid var(--border);
-      border-radius:14px; background:color-mix(in oklab,var(--panel),transparent 10%);
-    }
-    .step .n{
-      min-width:34px; height:34px; border-radius:10px;
-      display:flex; align-items:center; justify-content:center;
-      font-weight:850;
-      background:linear-gradient(135deg, color-mix(in oklab,var(--brand),transparent 30%), color-mix(in oklab,var(--brand-2),transparent 30%));
-      border:1px solid color-mix(in oklab,var(--border),transparent 10%);
-    }
     .hr{height:1px;background:var(--border);margin:16px 0}
-    details{border:1px solid var(--border); border-radius:14px; padding:12px; background:color-mix(in oklab,var(--panel),transparent 10%)}
-    summary{cursor:pointer; font-weight:750}
-    summary::-webkit-details-marker{display:none}
-
     .footer{
       border-top:1px solid var(--border);
       padding:24px 0;
       margin-top:24px
     }
 
-    /* Print */
+    /* ✅ 시스템 구조도 이미지 */
+    .figure{
+      margin-top:12px;
+      border:1px solid var(--border);
+      border-radius:16px;
+      overflow:hidden;
+      background:color-mix(in oklab,var(--panel),transparent 10%);
+    }
+    .figure img{
+      display:block;
+      width:100%;
+      height:auto;
+    }
+    .figcap{
+      padding:10px 12px;
+      border-top:1px solid var(--border);
+      font-size:12px;
+      color:var(--muted);
+      line-height:1.5;
+    }
+
+    /* ✅ 코드 스크롤 박스 */
+    .code-card-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:6px;
+    }
+    .codebox{
+      margin-top:12px;
+      max-height:420px;
+      overflow:auto;
+      padding:14px;
+      border-radius:14px;
+      border:1px solid var(--border);
+      background:color-mix(in oklab, var(--chip), transparent 5%);
+      font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+      font-size:12px;
+      line-height:1.55;
+      white-space:pre;
+      tab-size:2;
+    }
+    .code-meta{
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+      color:var(--muted); font-size:12px;
+    }
+
     @media print{
       header,.btn-row{display:none}
       .container{padding:0}
       body{background:#fff;color:#000}
       .card{border:1px solid #ddd}
       a{color:#000;text-decoration:none}
+      .codebox{max-height:none}
     }
   </style>
 </head>
@@ -203,11 +219,9 @@
         <a href="#overview">개발 개요</a>
         <a href="#problem">문제/해결</a>
         <a href="#features">주요 기능</a>
-        <a href="#architecture">구조도</a>
+        <a href="#architecture">시스템 구조</a>
+        <a href="#code">태깅 코드</a>
         <a href="#stack">기술 스택</a>
-        <a href="#roadmap">업그레이드</a>
-        <a href="#demo">시연</a>
-        <a href="#feedback">피드백</a>
         <a href="#contact">Contact</a>
       </nav>
       <button class="nav-toggle btn" aria-label="메뉴 열기" onclick="toggleMenu()">메뉴</button>
@@ -216,11 +230,9 @@
       <a href="#overview">개발 개요</a> ·
       <a href="#problem">문제/해결</a> ·
       <a href="#features">주요 기능</a> ·
-      <a href="#architecture">구조도</a> ·
+      <a href="#architecture">시스템 구조</a> ·
+      <a href="#code">태깅 코드</a> ·
       <a href="#stack">기술 스택</a> ·
-      <a href="#roadmap">업그레이드</a> ·
-      <a href="#demo">시연</a> ·
-      <a href="#feedback">피드백</a> ·
       <a href="#contact">Contact</a>
     </div>
   </header>
@@ -231,7 +243,7 @@
       <img class="avatar" alt="프로필 이미지" src="https://github.com/kwung0206/resume/blob/main/profile.jpg?raw=1" />
       <div>
         <h1>AI-Collector <span class="muted">/ AI 영상 모음 사이트</span></h1>
-        <div class="badge">생성형 AI 영상 공유 · 카테고리 정리 · 프롬프트 기반 추천 · AI 유해 영상 필터링</div>
+        <div class="badge">생성형 AI 영상 공유 · 카테고리 정리 · 프롬프트 기반 추천 · 유해 영상 필터링</div>
         <p class="muted" style="margin-top:10px">
           “만들고 싶은 영상을 더 빨리, 더 정확하게.”<br/>
           흩어진 AI 영상을 모으고, 프롬프트로 유사 영상을 찾아 시행착오를 줄이는 플랫폼을 목표로 개발했습니다.
@@ -239,11 +251,9 @@
         <div class="btn-row">
           <a class="btn" href="mailto:kgj0199kgj0199@gmail.com">문의 메일</a>
           <a class="btn secondary" href="https://github.com/kwung0206" target="_blank" rel="noopener">GitHub</a>
-          <!-- <a class="btn secondary" href="https://aicollector.co.kr" target="_blank" rel="noopener">서비스 열기</a> -->
           <button class="btn secondary" onclick="window.print()">PDF로 저장(인쇄)</button>
         </div>
         <div class="chips" aria-hidden="true">
-          <span class="chip">aicollector.co.kr</span>
           <span class="chip">개인 프로젝트</span>
           <span class="chip">2025.05 ~ 진행중</span>
         </div>
@@ -256,45 +266,45 @@
         <h2>개발 개요</h2>
         <p>
           생성형 AI 영상은 “프롬프트 수정 → 스타일 변경 → 재생성”을 반복하며 결과물을 맞춰가는 경우가 많습니다.
-          하지만 그 과정이 길고 비효율적이라, 작은 프로젝트 하나를 완성하는 수준의 시간이 들기도 합니다.
+          이 과정이 길어질수록 제작 비용(시간)이 커지고, 기대와 다른 결과가 나오면 다시 처음으로 돌아가야 합니다.
         </p>
         <p>
-          AI-Collector는 이런 제작 과정을 “영감 탐색 + 재사용 + 빠른 탐색” 중심으로 바꾸기 위해,
-          생성된 영상들을 서로 공유하고 프롬프트로 찾아볼 수 있는 허브를 지향합니다.
+          AI-Collector는 생성된 영상들을 <strong>공유/정리</strong>하고, <strong>프롬프트로 빠르게 탐색</strong>할 수 있게 만들어
+          “시행착오를 줄이는 영상 허브”를 지향합니다.
         </p>
       </div>
       <div class="card">
         <h2>프로젝트 메타</h2>
         <p><strong>형태</strong> · 1인 풀스택 & DevOps + AI 파이프라인</p>
-        <p><strong>목표</strong> · 제작 시행착오 비용(시간)을 줄이고, 원하는 결과물에 더 빠르게 도달</p>
+        <p><strong>핵심</strong> · 정리(태그/카테고리) + 추천(프롬프트) + 안전(유해 필터)</p>
         <div class="hr"></div>
         <div class="chips">
-          <span class="pill ok">정리/검색</span>
-          <span class="pill warn">추천/유사도</span>
-          <span class="pill bad">유해 영상 차단</span>
+          <span class="pill">정리</span>
+          <span class="pill">추천</span>
+          <span class="pill">안전</span>
         </div>
       </div>
     </section>
 
-    <!-- 문제점과 핵심 해결책 -->
+    <!-- 문제/해결 -->
     <section id="problem" class="card">
-      <h2>현재 문제점과 핵심 해결책</h2>
+      <h2>문제 정의 & 해결 방향</h2>
       <div class="grid grid-2" style="margin-top:10px">
         <div>
-          <h3>문제점</h3>
+          <h3>문제</h3>
           <ul>
-            <li><strong>과도한 생성 시간</strong> — 만족할 때까지 반복 생성이 필요</li>
-            <li><strong>기대 불일치</strong> — 결과물이 기대와 달라 재생성을 유발</li>
-            <li><strong>참고 자료 부족</strong> — “어떤 프롬프트/스타일이 어떤 결과”를 빠르게 비교하기 어려움</li>
+            <li>생성 반복으로 <strong>시간이 과도하게 소모</strong></li>
+            <li>결과물이 기대와 달라 <strong>재생성 루프</strong>가 발생</li>
+            <li>참고 자료가 흩어져 있어 <strong>비교/탐색</strong>이 어려움</li>
           </ul>
         </div>
         <div>
-          <h3>핵심 해결책</h3>
+          <h3>해결</h3>
           <ul>
-            <li><strong>공유</strong> — 생성된 영상을 모아 레퍼런스가 쌓이는 구조</li>
-            <li><strong>정리</strong> — 카테고리/태그/인기 기준으로 빠르게 탐색</li>
-            <li><strong>추천</strong> — 프롬프트 의도를 분석해 유사 영상 제안</li>
-            <li><strong>안전</strong> — 유해 영상 자동 감지 + 관리자 검증</li>
+            <li>생성된 영상을 <strong>공유</strong>해 레퍼런스를 쌓고</li>
+            <li><strong>카테고리/태그</strong>로 정리하고</li>
+            <li><strong>프롬프트 기반</strong>으로 유사 영상을 추천</li>
+            <li><strong>유해 영상 필터링</strong>으로 안전한 플랫폼 유지</li>
           </ul>
         </div>
       </div>
@@ -304,117 +314,90 @@
     <section id="features" class="grid">
       <div class="card">
         <h2>주요 기능</h2>
-        <p class="muted">“정리 → 추천 → 안전” 3축으로 사용자의 탐색 시간을 줄이는 것을 핵심으로 설계했습니다.</p>
+        <p class="muted">사용자가 “찾고 싶은 영상”에 빠르게 도달하도록, 정리/추천/안전 흐름으로 설계했습니다.</p>
       </div>
 
-      <!-- 1) 카테고리 정리 -->
       <div class="card">
-        <h3>1) 카테고리별 AI 영상 정리</h3>
+        <h3>카테고리 정리</h3>
         <ul>
-          <li><strong>태그 기반 필터링</strong> — 업로드 시 태그를 부여하고, 목록에서 필터링</li>
-          <li><strong>인기/반응 기반 정렬</strong> — 좋아요/싫어요/조회수/최신순 등으로 분류</li>
-          <li><strong>영상 특징 분석</strong> — 영상 프레임을 이미지로 변환 후, 특징을 추출해 DB에 저장(분석용)</li>
+          <li>태그 기반 필터링, 정렬(최신/조회/반응)</li>
+          <li>업로드 영상의 프레임/특징 추출(분석용)</li>
         </ul>
-        <div class="chips">
-          <span class="chip">태그</span>
-          <span class="chip">필터</span>
-          <span class="chip">정렬</span>
-          <span class="chip">특징 분석</span>
-        </div>
       </div>
 
-      <!-- 2) 프롬프트 추천 -->
       <div class="card">
-        <h3>2) 프롬프트 기반 영상 추천</h3>
-        <p>
-          사용자가 만들고자 하는 영상의 <strong>목적/스타일/핵심 프롬프트</strong>를 입력하면,
-          입력 의도를 분석하고 DB에서 유사 영상을 찾아 추천합니다.
-        </p>
-        <div class="steps" aria-label="추천 흐름">
-          <div class="step">
-            <div class="n">1</div>
-            <div>
-              <strong>프롬프트 입력</strong>
-              <div class="muted">목적과 스타일, 핵심 프롬프트를 입력</div>
-            </div>
-          </div>
-          <div class="step">
-            <div class="n">2</div>
-            <div>
-              <strong>AI 분석</strong>
-              <div class="muted">입력 의도 파악 및 특징 추출</div>
-            </div>
-          </div>
-          <div class="step">
-            <div class="n">3</div>
-            <div>
-              <strong>유사 영상 검색</strong>
-              <div class="muted">DB에서 유사 영상 후보군 탐색</div>
-            </div>
-          </div>
-          <div class="step">
-            <div class="n">4</div>
-            <div>
-              <strong>추천 목록 제공</strong>
-              <div class="muted">추천 영상/태그/요약을 함께 표시</div>
-            </div>
-          </div>
-        </div>
-        <details style="margin-top:12px">
-          <summary>추천이 도움이 되는 이유</summary>
-          <ul>
-            <li>시행착오를 줄이고, 레퍼런스로 빠르게 방향을 잡을 수 있음</li>
-            <li>제작 시간을 단축하고, 원하는 결과물에 더 빨리 도달</li>
-          </ul>
-        </details>
-      </div>
-
-      <!-- 3) 유해 영상 필터링 -->
-      <div class="card">
-        <h3>3) AI 기반 유해 영상 필터링</h3>
-        <p>
-          유해 콘텐츠 가능성이 있는 영상은 <strong>자동 감지 → 관리자 검증</strong> 흐름으로 운영해
-          “안전하게 공유할 수 있는 AI 영상 공간”을 유지합니다.
-        </p>
+        <h3>프롬프트 기반 추천</h3>
         <ul>
-          <li><strong>1차 필터링</strong> — AI로 위험 요소 탐지 (예: 성인/폭력 등)</li>
-          <li><strong>2차 검증</strong> — 관리자 페이지에서 차단 영상 확인</li>
-          <li><strong>3차 처리</strong> — 차단 해제 또는 삭제</li>
+          <li>목적/스타일/키워드를 입력하면 유사 영상을 추천</li>
+          <li>결과물 비교 → 프롬프트 수정 비용을 줄이는 UX</li>
         </ul>
-        <div class="chips">
-          <span class="pill bad">안전</span>
-          <span class="pill warn">운영</span>
-          <span class="pill ok">신뢰</span>
-        </div>
-        <p class="muted" style="margin-top:10px">
-          ※ 구현/연동 방식은 운영 정책과 환경에 맞춰 조정 가능하도록 설계했습니다.
-        </p>
+      </div>
+
+      <div class="card">
+        <h3>AI 유해 영상 필터링</h3>
+        <ul>
+          <li>AI 1차 감지 → 관리자 검증 → 차단/승인 처리</li>
+          <li>안전한 공유 환경 유지</li>
+        </ul>
       </div>
     </section>
 
-    <!-- 구조도 / 아키텍처 -->
-    <section id="architecture" class="grid grid-2">
-      <div class="card">
-        <h2>시스템 구조도 (요약)</h2>
-        <ul>
-          <li><strong>Web</strong> · React(Vite) 프론트엔드</li>
-          <li><strong>API</strong> · Spring Boot 백엔드(인증/영상/추천/관리자)</li>
-          <li><strong>DB</strong> · Oracle (메타데이터/태그/반응/상태)</li>
-          <li><strong>Storage</strong> · 영상 파일(경로/메타 분리)</li>
-          <li><strong>AI</strong> · 태그/특징 분석 모듈 + 추천 로직</li>
-          <li><strong>Proxy</strong> · Nginx + HTTPS(SSL)</li>
-        </ul>
-        <p class="muted">구조도 이미지는 PPT/README에 있는 도식으로 교체해 넣으면 완성도가 더 올라갑니다.</p>
+    <!-- ✅ 시스템 구조(이미지 포함) -->
+    <section id="architecture" class="card">
+      <h2>시스템 구조도</h2>
+      <p class="muted">
+        아래 이미지는 실제 구성한 시스템 구조도입니다. (profile.jpg와 같은 경로의 <code>picture.png</code> 사용)
+      </p>
+
+      <div class="figure">
+        <img
+          src="https://github.com/kwung0206/resume/blob/main/picture.png?raw=1"
+          alt="AI-Collector 시스템 구조도"
+          loading="lazy"
+        />
+        <div class="figcap">
+          System Diagram · Front(React) / Back(Spring Boot) / DB(Oracle) / Storage / AI Tagging / Nginx(SSL) 구성
+        </div>
       </div>
 
-      <div class="card">
-        <h2>아키텍처 설명 (포인트)</h2>
-        <ul>
-          <li><strong>정리</strong>와 <strong>추천</strong>은 “탐색 시간 단축”이라는 같은 목표를 공유</li>
-          <li><strong>필터링(안전)</strong>은 운영 신뢰도를 만들기 위한 필수 축</li>
-          <li>향후 <strong>유사도 검색</strong>을 강화하기 위해 특징/태그 확장 가능</li>
-        </ul>
+      <div class="hr"></div>
+
+      <h3>아키텍처 요약</h3>
+      <ul>
+        <li><strong>Front</strong> · React/Vite</li>
+        <li><strong>Back</strong> · Spring Boot API (인증/영상/추천/관리자)</li>
+        <li><strong>DB</strong> · Oracle (메타데이터/태그/상태/반응)</li>
+        <li><strong>AI</strong> · 태깅(프레임 기반 분석) 모듈 연동</li>
+        <li><strong>Proxy</strong> · Nginx + HTTPS</li>
+      </ul>
+    </section>
+
+    <!-- ✅ 태깅 코드: 링크 + 스크롤 박스(자동 로딩) -->
+    <section id="code" class="card">
+      <h2>영상 태깅 코드</h2>
+      <p>
+        영상에 태그를 부여하는 파이썬 코드:
+        <a href="https://github.com/kwung0206/resume/blob/main/desktop_ml_damon.py" target="_blank" rel="noopener">
+          desktop_ml_damon.py (GitHub)
+        </a>
+      </p>
+
+      <div class="code-card-head">
+        <div class="code-meta">
+          <span class="pill">스크롤로 보기</span>
+          <span class="pill">raw 로드</span>
+        </div>
+        <div class="btn-row" style="margin-top:0">
+          <button class="btn secondary" type="button" onclick="reloadCode()">코드 다시 불러오기</button>
+          <button class="btn secondary" type="button" onclick="copyCode()">코드 복사</button>
+        </div>
       </div>
+
+      <pre class="codebox" id="codeBox">코드 불러오는 중…</pre>
+      <p class="muted" style="font-size:12px;margin-top:10px">
+        만약 코드가 안 뜨면, 파일 경로/브랜치(main) 또는 저장소가 다른 경우일 수 있어요.
+        위 GitHub 링크는 그대로 동작합니다.
+      </p>
     </section>
 
     <!-- 기술 스택 -->
@@ -452,106 +435,7 @@
         <span class="chip">Oracle</span>
         <span class="chip">Docker</span>
         <span class="chip">Nginx</span>
-        <span class="chip">AI Tagging</span>
-      </div>
-    </section>
-
-    <!-- 개발에 사용한 생성형 AI -->
-    <section id="genai" class="card">
-      <h2>개발에 사용한 생성형 AI</h2>
-      <p>
-        <strong>ChatGPT 5.1 Thinking + Project</strong>를 활용해 요구사항 정리, 오류 원인 분석,
-        구현 방향 설계(아키텍처/보안/DB/프론트)까지 일관된 룰로 관리하는 방식으로 개발했습니다.
-      </p>
-      <p class="muted">
-        답변 대기 시간이 길 수 있지만(최대 약 11분) 문제 해결과 구현 품질을 우선한 전략이었습니다.
-      </p>
-    </section>
-
-    <!-- 업그레이드 과정 -->
-    <section id="roadmap" class="grid">
-      <div class="card">
-        <h2>업그레이드 과정</h2>
-        <p class="muted">
-          “정확도 vs 속도” 트레이드오프를 실제로 겪으면서, 태그 방식과 모델 전략을 단계적으로 개선했습니다.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>AI Collector v2 — CNN 기반 태그 자동화</h3>
-        <ul>
-          <li>사용자가 직접 설정하던 태그를 <strong>학습한 CNN 모델</strong>로 자동 부여</li>
-          <li><strong>장점</strong> · 속도 빠름</li>
-          <li><strong>단점</strong> · 정확성 한계</li>
-          <li>멀티레이블 특성으로 <strong>Softmax 대신 Sigmoid</strong> 적용(태그별 독립 확률)</li>
-          <li>기존 분류 레이어를 제거하고 <strong>정의한 태그(예: 14개)에 맞는 출력 레이어</strong>를 추가</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h3>AI Collector v3 — 비전 LLM(Ollama)로 태그 정확도 강화</h3>
-        <ul>
-          <li>태그 정확도를 올리기 위해 <strong>비전 LLM</strong> 전략으로 전환</li>
-          <li><strong>속도는 느려지지만</strong> 정확도는 개선</li>
-        </ul>
-        <details style="margin-top:12px">
-          <summary>현재 방향(확장)</summary>
-          <ul>
-            <li>태그/특징 추출 값을 늘려 비교군을 확대</li>
-            <li>프롬프트 기반 추천 정확도를 높이기 위한 정규화/UX 개선</li>
-          </ul>
-        </details>
-      </div>
-    </section>
-
-    <!-- KPI/결과 -->
-    <section id="kpi" class="card">
-      <h2>결과 & KPI (내부 목표/측정)</h2>
-      <div class="kpi">
-        <div class="tile">
-          <div class="num">탐색 시간 ↓</div>
-          <div class="muted">정리/필터/추천 중심 UX로 탐색 단계 단축</div>
-        </div>
-        <div class="tile">
-          <div class="num">시행착오 ↓</div>
-          <div class="muted">프롬프트 기반 유사 영상 추천으로 레퍼런스 확보</div>
-        </div>
-        <div class="tile">
-          <div class="num">안전성 ↑</div>
-          <div class="muted">유해 영상 감지 + 관리자 검증 흐름</div>
-        </div>
-      </div>
-      <p class="muted" style="margin-top:10px">
-        ※ 실제 수치 KPI(응답시간/처리시간 등)는 운영 환경에서 계측한 값으로 교체해 넣으면 더 설득력 있어요.
-      </p>
-    </section>
-
-    <!-- 시연 -->
-    <section id="demo" class="card">
-      <h2>시연 영상</h2>
-      <p class="muted">
-        시연 영상 링크/임베드를 여기에 연결하세요. (PPT 기준: 특정 구간 배속 시연)
-      </p>
-      <div class="btn-row">
-        <!-- 예시 -->
-        <!-- <a class="btn" href="https://youtu.be/VIDEO_ID" target="_blank" rel="noopener">시연 영상 보러가기</a> -->
-        <span class="pill">Demo: 링크 연결 예정</span>
-      </div>
-    </section>
-
-    <!-- 사용자 피드백 & 향후 계획 -->
-    <section id="feedback" class="card">
-      <h2>사용자 피드백 · 향후 계획</h2>
-      <ul>
-        <li><strong>태그/특징 값 확장</strong> — 프롬프트에서 뽑은 특징과 비교할 비교군을 늘려 정확도 개선</li>
-        <li><strong>UI/UX 개선</strong> — 찾기/추천 결과를 더 직관적으로(요약 카드, 정렬/필터 개선)</li>
-        <li><strong>추천 고도화</strong> — 유사도 기준 개선(태그 정규화, 후보군 확장)</li>
-      </ul>
-      <div class="chips">
-        <span class="chip">정확도</span>
-        <span class="chip">비교군 확대</span>
-        <span class="chip">UI/UX</span>
-        <span class="chip">추천 고도화</span>
+        <span class="chip">Python</span>
       </div>
     </section>
 
@@ -564,7 +448,8 @@
         <a class="btn secondary" href="https://github.com/kwung0206" target="_blank" rel="noopener">github.com/kwung0206</a>
       </div>
       <p class="muted" style="font-size:12px;margin-top:12px">
-        프로필 이미지: <a href="https://github.com/kwung0206/resume/blob/main/profile.jpg" target="_blank" rel="noopener">github.com/kwung0206/resume/profile.jpg</a>
+        프로필 이미지: <a href="https://github.com/kwung0206/resume/blob/main/profile.jpg" target="_blank" rel="noopener">profile.jpg</a> ·
+        구조도: <a href="https://github.com/kwung0206/resume/blob/main/picture.png" target="_blank" rel="noopener">picture.png</a>
       </p>
     </section>
   </main>
@@ -581,14 +466,45 @@
       el.classList.toggle('open');
     }
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    // anchor 클릭 시 모바일 메뉴 닫기
     document.querySelectorAll('a[href^="#"]').forEach(a=>{
       a.addEventListener('click',()=>{
         const m=document.getElementById('mobileMenu');
         if(m && m.classList.contains('open')) m.classList.remove('open');
       })
-    })
+    });
+
+    // ✅ raw 코드 로딩 (자동)
+    const RAW_CODE_URL = "https://raw.githubusercontent.com/kwung0206/resume/main/desktop_ml_damon.py";
+    async function loadCode(){
+      const box = document.getElementById("codeBox");
+      try{
+        box.textContent = "코드 불러오는 중…";
+        const res = await fetch(RAW_CODE_URL, { cache: "no-store" });
+        if(!res.ok) throw new Error("HTTP " + res.status);
+        const text = await res.text();
+        box.textContent = text;
+      }catch(err){
+        box.textContent =
+          "코드를 불러오지 못했습니다. (" + err.message + ")\n\n" +
+          "1) 파일 경로/브랜치(main) 확인\n" +
+          "2) 저장소가 다른 경우 RAW_CODE_URL 수정\n\n" +
+          "대신 GitHub 링크로 확인 가능:\n" +
+          "https://github.com/kwung0206/resume/blob/main/desktop_ml_damon.py";
+      }
+    }
+    function reloadCode(){ loadCode(); }
+
+    async function copyCode(){
+      const text = document.getElementById("codeBox").textContent || "";
+      try{
+        await navigator.clipboard.writeText(text);
+        alert("코드를 클립보드에 복사했어요.");
+      }catch(e){
+        alert("복사 실패: 브라우저 권한을 확인해줘.");
+      }
+    }
+
+    loadCode();
   </script>
 </body>
 </html>
